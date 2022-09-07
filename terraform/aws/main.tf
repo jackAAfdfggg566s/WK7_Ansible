@@ -10,7 +10,7 @@ terraform {
 }
 
 provider "aws" {
-  region  = "ap-southeast-2"
+  region  = "ap-east-1"
 }
 
 resource "aws_security_group_rule" "allow_80" {
@@ -18,7 +18,7 @@ resource "aws_security_group_rule" "allow_80" {
   from_port         = 80
   to_port           = 80
   protocol          = "tcp"
-  security_group_id = "sg-da83229f"
+  security_group_id = "sg-0d148b45d297b3982"
   cidr_blocks       = ["0.0.0.0/0"]
 }
 
@@ -27,7 +27,7 @@ resource "aws_security_group_rule" "allow_8080" {
   from_port         = 8080
   to_port           = 8080
   protocol          = "tcp"
-  security_group_id = "sg-da83229f"
+  security_group_id = "sg-0d148b45d297b3982"
   cidr_blocks       = ["0.0.0.0/0"]
 }
 
