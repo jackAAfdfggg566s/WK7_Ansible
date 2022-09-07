@@ -13,7 +13,7 @@ locals {
 
 source "amazon-ebs" "aws" {
   ami_name      = "jiangren-packer-demo-1-${local.timestamp}"
-  instance_type = "t2.micro"
+  instance_type = "t3.micro"
   region        = "ap-east-1"
   source_ami_filter {
     filters = {
