@@ -10,7 +10,7 @@ terraform {
 }
 
 provider "aws" {
-  region  = "ap-east-1"
+  region  = "ap-southeast-2"
 }
 
 resource "aws_security_group_rule" "allow_80" {
@@ -18,7 +18,7 @@ resource "aws_security_group_rule" "allow_80" {
   from_port         = 80
   to_port           = 80
   protocol          = "tcp"
-  security_group_id = "sg-0d148b45d297b3982"
+  security_group_id = "sg-0ad440e7812fe46a7"
   cidr_blocks       = ["0.0.0.0/0"]
 }
 
@@ -27,7 +27,7 @@ resource "aws_security_group_rule" "allow_8080" {
   from_port         = 8080
   to_port           = 8080
   protocol          = "tcp"
-  security_group_id = "sg-0d148b45d297b3982"
+  security_group_id = "sg-0ad440e7812fe46a7"
   cidr_blocks       = ["0.0.0.0/0"]
 }
 
@@ -56,7 +56,7 @@ data "aws_ami" "image_packer-ansible" {
 
 resource "aws_instance" "packer-shell" {
   ami           = "${data.aws_ami.image_packer-shell.id}"
-  instance_type = "t2.micro"
+  instance_type = "t3.micro"
   key_name = "${aws_key_pair.deployer.key_name}"
 
   tags = {
@@ -67,7 +67,7 @@ resource "aws_instance" "packer-shell" {
 
 resource "aws_instance" "packer-ansible" {
   ami           = "${data.aws_ami.image_packer-ansible.id}"
-  instance_type = "t2.micro"
+  instance_type = "t3.micro"
   key_name = "${aws_key_pair.deployer.key_name}"
 
   user_data = <<EOD
