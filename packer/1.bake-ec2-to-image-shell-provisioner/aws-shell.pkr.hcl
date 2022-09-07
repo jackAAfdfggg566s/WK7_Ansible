@@ -14,7 +14,7 @@ locals {
 source "amazon-ebs" "aws" {
   ami_name      = "jiangren-packer-demo-1-${local.timestamp}"
   instance_type = "t2.micro"
-  region        = "ap-southeast-2"
+  region        = "ap-east-1"
   source_ami_filter {
     filters = {
       name                = "ubuntu/images/*ubuntu-focal-20.04-amd64-server-*"
