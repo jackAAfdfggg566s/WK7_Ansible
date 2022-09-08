@@ -33,7 +33,7 @@ resource "aws_security_group_rule" "allow_8080" {
 
 resource "aws_key_pair" "deployer" {
   key_name   = "ansible-deployer-key"
-  public_key = file("/var/lib/jenkins/.ssh/id_rsa.pub")
+  public_key = file("/root/.ssh/id_rsa.pub")
 }
 
 data "aws_ami" "image_packer-shell" {
@@ -56,7 +56,7 @@ data "aws_ami" "image_packer-ansible" {
 
 resource "aws_instance" "packer-shell" {
   ami           = "${data.aws_ami.image_packer-shell.id}"
-  instance_type = "t3.micro"
+  instance_type = "t2.micro"
   key_name = "${aws_key_pair.deployer.key_name}"
 
   tags = {
@@ -67,7 +67,7 @@ resource "aws_instance" "packer-shell" {
 
 resource "aws_instance" "packer-ansible" {
   ami           = "${data.aws_ami.image_packer-ansible.id}"
-  instance_type = "t3.micro"
+  instance_type = "t2.micro"
   key_name = "${aws_key_pair.deployer.key_name}"
 
   user_data = <<EOD
