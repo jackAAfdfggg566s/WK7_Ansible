@@ -32,6 +32,7 @@ source "amazon-ebs" "aws" {
 
 build {
   name = "jiangren-packer-demo-2"
+  sudo: True
   sources = [
     "source.amazon-ebs.aws"
   ]
