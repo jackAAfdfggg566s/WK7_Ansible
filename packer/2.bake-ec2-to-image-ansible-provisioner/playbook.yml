@@ -6,10 +6,7 @@
   become_user: root
   user: ubuntu
 
-  file:
-    path: /var/lib/apt/lists/
-    state: directory
-    mode: 0755
+  
 
   tasks:
     - name: Install nginx
@@ -17,6 +14,12 @@
         name: nginx
         state: present
         update_cache: yes
+
+- name: packages | ensure apt list dir exists
+  file:
+      path: /var/lib/apt/lists/
+      state: directory
+      mode: 0755
 
 
 
